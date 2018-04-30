@@ -2,8 +2,8 @@ John as an advertiser would like to know how much it costs to advertise, so that
 he can make its investment decision. John would like to be able to filter by 
 aspect ratio (16: 9 ...) and Normal or Cheap Prices.
 
-Requirement: Create a screen that contains an 
-aspect ratio filter
+Requirement: 
+Create a screen that contains an aspect ratio filter
 && filter for cheap and normal price 
 && button to calculate the price.
 

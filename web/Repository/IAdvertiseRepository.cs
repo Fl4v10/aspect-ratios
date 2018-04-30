@@ -5,6 +5,6 @@ namespace web.Repository
 {
     public interface IAdvertiseRepository
     {
-		List<Display> GetDisplay(int? sizeId, int? aspectRatio);
+		List<Display> GetDisplay(int? sizeId);
     }
 }

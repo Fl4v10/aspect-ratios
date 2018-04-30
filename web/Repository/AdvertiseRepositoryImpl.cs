@@ -15,7 +15,7 @@ namespace web.Repository
 			_context = context;
 		}
 
-		public List<Display> GetDisplay(int? sizeId, int? displayTypePriceId)
+		public List<Display> GetDisplay(int? sizeId)
 		{
 			var display = _context.Displays
 				.Include("DisplaySize")
@@ -24,9 +24,6 @@ namespace web.Repository
 
 			if (sizeId.HasValue)
 				display = display.Where(p => sizeId.Value == p.DisplaySize.Id);
-
-			if (displayTypePriceId.HasValue)
-				display = display.Where(p => p.Prices.Any(m => m.Id.Equals(displayTypePriceId.Value)));
 
 			return display.ToList();
 		}
