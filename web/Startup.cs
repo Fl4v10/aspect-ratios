@@ -33,8 +33,14 @@ namespace Web
 					Newtonsoft.Json.ReferenceLoopHandling.Ignore
 				); ;
 
+			services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+			{
+				builder.AllowAnyOrigin()
+					   .AllowAnyMethod()
+					   .AllowAnyHeader();
+			}));
 
-            services.AddDbContextPool<Context>(options =>
+			services.AddDbContextPool<Context>(options =>
             {
                 options.UseInMemoryDatabase("tests").ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning));
                 options.EnableSensitiveDataLogging();
@@ -54,7 +60,8 @@ namespace Web
             }
 
             app.UseMvc();
-        }
+			app.UseCors("CorsPolicy");
+		}
 
         private void SeedDatabase(IApplicationBuilder app, IHostingEnvironment env)
         {
