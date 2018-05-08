@@ -1,7 +1,6 @@
 using tests;
 using web.Models;
 using web.Repository;
-using Web.Models;
 using Xunit;
 
 namespace Tests
@@ -11,28 +10,43 @@ namespace Tests
         [Fact]
         public void GetAllDisplaysTest()
         {
-			var advertise = new AdvertiseRepositoryImpl(inMemoryContext);
+			//Arrange
+	        new AdvertiseTestBase();
+	        var advertise = new AdvertiseRepositoryImpl(Context);
+
+			//Action
 			var result = advertise.GetDisplay(null);
 
+			//Assert
 			Assert.Equal(5, result.Count);
         }
 
 		[Fact]
-		public void Get1980x1080DisplaysTest()
+		public void Get1980X1080DisplaysTest()
 		{
-			var advertise = new AdvertiseRepositoryImpl(inMemoryContext);
+			//Arrange
+			new AdvertiseTestBase();
+			var advertise = new AdvertiseRepositoryImpl(Context);
+
+			//Action
 			var result = advertise.GetDisplay((int)DisplayType.Landscape);
 
+			//Assert
 			Assert.Equal(3, result.Count);
 		}
 
 		[Fact]
-		public void Get1080x1980DisplaysTest()
+		public void Get1080X1980DisplaysTest()
 		{
-			var advertise = new AdvertiseRepositoryImpl(inMemoryContext);
+			//Arrange
+			new AdvertiseTestBase();
+			var advertise = new AdvertiseRepositoryImpl(Context);
+
+			//Action
 			var result = advertise.GetDisplay((int)DisplayType.Portrait);
 
+			//Assert
 			Assert.Equal(2, result.Count);
 		}
-    }
+	}
 }

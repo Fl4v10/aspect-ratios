@@ -6,22 +6,22 @@ namespace tests
 {
     public class AdvertiseTestBase : IDisposable
 	{
-		protected readonly Context inMemoryContext;
+		protected readonly Context Context;
 
 		public AdvertiseTestBase()
 		{
 			var options = new DbContextOptionsBuilder<Context>()
-				.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()).Options;
+				.UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
 
-			inMemoryContext = new Context(options);
-			inMemoryContext.Database.EnsureCreated();
-			inMemoryContext.SeedData().Wait();
+			Context = new Context(options);
+			Context.Database.EnsureCreated();
+			Context.SeedData().Wait();
 		}
 
 		public void Dispose()
 		{
-			inMemoryContext.Database.EnsureDeleted();
-			inMemoryContext.Dispose();
+			Context.Database.EnsureDeleted();
+			Context.Dispose();
 		}
 	}
 }
