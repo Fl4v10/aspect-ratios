@@ -8,12 +8,9 @@ namespace web.Repository
 {
 	public class AdvertiseRepositoryImpl : IAdvertiseRepository
 	{
-		private Context _context;
+		private readonly Context _context;
 
-		public AdvertiseRepositoryImpl(Context context)
-		{
-			_context = context;
-		}
+		public AdvertiseRepositoryImpl(Context context) => _context = context;
 
 		public List<Display> GetDisplay(int? sizeId)
 		{

@@ -11,7 +11,7 @@ namespace tests
 		public AdvertiseTestBase()
 		{
 			var options = new DbContextOptionsBuilder<Context>()
-				.UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+				.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()).Options;
 
 			Context = new Context(options);
 			Context.Database.EnsureCreated();
